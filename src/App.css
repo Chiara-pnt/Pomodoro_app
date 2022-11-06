@@ -1,38 +1,105 @@
-.App {
+body{
+  background-color: #4b7f52;
+  color: #eee;
+}
+
+.main{
+  padding-top: 50px;
+  max-width: 340px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button{
+  background-color: transparent;
+  color: #c9ffe2;
+  border: 0;
+  width: 100px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.controls{
+  border-radius: 20px;
+  transition: ease-in-out 0.4s;
+}
+
+.controls:hover{
+  color: #fff;
+  background-color:rgba(201, 255, 226, 0.2) ;
+ 
+}
+
+.settings{
+  width: auto;
+  background-color: rgba(201, 255, 226, 0.2);
+  border-radius: 20px;
+  padding: 10px 20px;
+  line-height: 36px;
+  transition: ease-in-out 0.4s;
+  font-size: 1.9rem;
+}
+
+.settings:hover{
+  background-color: rgba(201, 255, 226, 0.5);
+  color: #fff;
+  font-size: 2rem;
+}
+
+.settings svg{
+  width: 40px;
+  float: left;
+  margin-right: 5px;
+}
+
+
+  label {
+    text-align: center;
+    display: block;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 12px;
+    margin: 20px;
   }
+
+input{
+  width: 140px;
+  height: 40px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(201, 255, 226, 0.5);
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 14px;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin-right: 16px;
+  height: 30px;
+  width: 14px;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="number"]::-webkit-inner-spin-button:active {
+  opacity: 1;
+  border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.backbutton{
+  display: block;
+  width: 80px;
+  margin: auto;
+  padding: 20px;
+  
+}
+
+.backbutton svg{
+  float: left;
 }
