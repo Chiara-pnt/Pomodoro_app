@@ -103,3 +103,9 @@ input[type="number"]::-webkit-inner-spin-button:active {
 .backbutton svg{
   float: left;
 }
+
+.timer{
+  font-size: 100px;
+  color: #c9ffe2;
+  margin-top: 80px;
+}

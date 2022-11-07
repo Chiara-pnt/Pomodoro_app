@@ -1,41 +1,72 @@
 import React from 'react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-
 import PauseButton from './PauseButton';
 import PlayButton from './PlayButton';
 import SettingsButton from './SettingsButton';
+import ResetButton from './ResetButton';
 
 
-const Timer = ({ handleClickSettings, timerLength, workBreak, isPaused, mode, secondsLeft }) => {
+const Timer = ({ handleClickSettings, timerLength, workBreak, isPaused, mode, secondsLeft, setIsPaused, setTimerLength }) => {
 
-  const totalSeconds = mode === 'work'
-  ? timerLength
-  : workBreak * 60;
-const percentage = Math.round(secondsLeft / totalSeconds * 100);
-
+  console.log(timerLength)
+  
 const minutes = Math.floor(secondsLeft / 60);
 let seconds = secondsLeft % 60;
 if(seconds < 10) seconds = '0'+ seconds;
 
+const handlePause = () => {
+  setIsPaused(!isPaused)
+}
+
+const handleReset = () => {
+
+}
+
+const handleTimerChange = (e) => {
+  setTimerLength(e.target.value)
+}
 
   return (
     <div>
-        <CircularProgressbar 
-        value={percentage} 
-        text={minutes + ':' + seconds} 
-        styles={buildStyles( {
-            strokeLinecap: 'round', 
-            textColor: '#fff', pathColor:'#77a6b6', trailColor:'#c9ffe2'
-        })} />
+
+
+      <div>
+        <label>Work minutes: {timerLength}:00</label>
+        <input 
+        
+        type="number" 
+        name="pomodoro" 
+        id="pomodoro" 
+        min="5" 
+        max="90" 
+        defaultValue={timerLength}
+        onChange={handleTimerChange}
+        ></input>
+        <label>Break minutes: {workBreak}:00</label>
+        <input 
+        type="number" 
+        name="workBreak" 
+        id="workBreak" 
+        min="1" 
+        max="30" 
+        defaultValue={workBreak}
+        ></input>
+    </div>
+
+
+      <div>
+        {mode === 'work' ? <p>Working time!</p> : <p>You're on Break!</p>}
+      </div>
+      <div className='timer'>
+        {minutes + ':' + seconds}
+      </div>
     <div style={{ margin:'20px'}}>
       {
         isPaused ? 
-        <PlayButton />
+        <PlayButton onClick={handlePause} />
         :
-        <PauseButton />
+        <PauseButton onClick={handlePause} />
       }
-       
+       <ResetButton onClick={handleReset} />
        
         <div style={{ marginTop: '20px'}}>
             <SettingsButton onClick={handleClickSettings}/>

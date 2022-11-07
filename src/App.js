@@ -1,5 +1,4 @@
 import './App.css';
-import SettingPanel from './components/SettingPanel';
 import Timer from './components/Timer'
 import { useState, useEffect  } from 'react';
 
@@ -7,22 +6,17 @@ import { useState, useEffect  } from 'react';
 
 function App() {
 
-  const [showPanel, setShowPanel] = useState(false)
   const [ timerLength, setTimerLength ] = useState(25)
   const [ workBreak, setWorkBreak ] = useState(5)
   const [isPaused, setIsPaused] = useState(true);
   const [secondsLeft, setSecondsLeft] = useState(timerLength * 60);
   const [mode, setMode ] = useState('work');
 
-const handleClickSettings = () => {
-  setShowPanel(!showPanel);
-}
-
 useEffect(() => {
 
   function switchMode() {
     const nextMode = mode === 'work' ? 'break' : 'work';
-     const nextSeconds = (nextMode === 'work' ? timerLength : workBreak) * 60;
+     const nextSeconds = (nextMode === 'work' ? timerLength * 60 : workBreak * 60) ;
 
     setMode(nextMode);
 
@@ -48,28 +42,18 @@ useEffect(() => {
 }, [mode, isPaused, secondsLeft, workBreak, timerLength]);
 
 
-
-
-
   return (
     <div className="main">
-      { showPanel ? 
-      <SettingPanel 
-      timerLength={timerLength}
-      workBreak={workBreak}
-      setTimerLength={setTimerLength} 
-      setWorkBreak={setWorkBreak}
-      handleClickSettings={handleClickSettings}
-
-      /> : 
       <Timer 
-      handleClickSettings={handleClickSettings}
       timerLength={timerLength}
       workBreak={workBreak}
       isPaused={isPaused}
       secondsLeft={secondsLeft}
       mode={mode}
-      /> }
+      setIsPaused={setIsPaused}
+      setWorkBreak={setWorkBreak}
+      setTimerLength={setTimerLength}
+      />
     </div>
   );
 }
