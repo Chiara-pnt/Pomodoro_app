@@ -67,18 +67,14 @@ const Timer = () => {
         <label>Work minutes: {timerLength}:00</label>
         <input
           type="number"
-          name="pomodoro"
-          id="pomodoro"
           min="5"
-          max="90"
+          max="60"
           value={timerLength}
           onChange={handleTimerChange}
         ></input>
         <label>Break minutes: {workBreak}:00</label>
         <input
           type="number"
-          name="workBreak"
-          id="workBreak"
           min="1"
           max="30"
           value={workBreak}
